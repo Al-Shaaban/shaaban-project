@@ -1,0 +1,26 @@
+{
+  "name": "p-setup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "license": "ISC",
+  "author": "",
+  "bin": {
+    "shaaban-project": "index.js",
+    "sh-p": "index.js"
+  },
+  "files": [
+    "index.js",
+    "template-*",
+    "dist"
+  ],
+  "scripts": {
+    "dev": "unbuild --stub"
+  },
+  "dependencies": {
+    "@types/prompts": "^2.4.8",
+    "prompts": "^2.4.2",
+    "unbuild": "^2.0.0"
+  }
+}
