@@ -20,21 +20,42 @@ const FRAMEWORKS: Framework[] = [
   },
 ];
 
+function validPackageName(projectName: string): string {
+  return projectName
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/^[._]/, "")
+    .replace(/[^a-z\d\-~]+/g, "-");
+}
+
 async function setupProject() {
   try {
-    const projectFramework = await prompts({
-      type: "select",
-      name: "framework",
-      message: "Select a framework:",
-      choices: FRAMEWORKS.map((framework) => {
-        return {
-          title: framework.display,
-          value: framework.name,
-        };
-      }),
-    });
+    const projectFramework = await prompts([
+      {
+        type: "text",
+        name: "projectName",
+        message: "Project name:",
+        initial: "shaaban-project",
+      },
+      {
+        type: "select",
+        name: "framework",
+        message: "Select a framework:",
+        choices: FRAMEWORKS.map((framework) => {
+          return {
+            title: framework.display,
+            value: framework.name,
+          };
+        }),
+        initial: 0,
+      },
+    ]);
 
-    console.log(projectFramework.framework);
+    console.table({
+      projectName: validPackageName(projectFramework.projectName),
+      framework: projectFramework.framework,
+    });
   } catch (error) {
     console.log(error);
   }
