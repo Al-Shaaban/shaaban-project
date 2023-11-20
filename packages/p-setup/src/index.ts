@@ -1,22 +1,27 @@
 import prompts from "prompts";
+import { blue, black, green } from "kolorist";
 
 type Framework = {
   name: string;
   display: string;
+  color: (str: string | number) => string;
 };
 
 const FRAMEWORKS: Framework[] = [
   {
     name: "react",
     display: "React",
+    color: blue,
   },
   {
     name: "next",
     display: "Next",
+    color: black,
   },
   {
     name: "docusaurus",
     display: "Docusaurus",
+    color: green,
   },
 ];
 
@@ -44,7 +49,7 @@ async function setupProject() {
         message: "Select a framework:",
         choices: FRAMEWORKS.map((framework) => {
           return {
-            title: framework.display,
+            title: framework.color(framework.display),
             value: framework.name,
           };
         }),

@@ -112,6 +112,9 @@ importers:
       '@types/prompts':
         specifier: ^2.4.8
         version: 2.4.8
+      kolorist:
+        specifier: ^1.8.0
+        version: 1.8.0
       prompts:
         specifier: ^2.4.2
         version: 2.4.2
@@ -3509,6 +3512,10 @@ packages:
   /kleur@3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
+    dev: false
+
+  /kolorist@1.8.0:
+    resolution: {integrity: sha512-Y+60/zizpJ3HRH8DCss+q95yr6145JXZo46OTpFvDZWLfRCE4qChOyk1b26nMaNpfHHgxagk9dXT5OP0Tfe+dQ==}
     dev: false
 
   /language-subtag-registry@0.3.22:
