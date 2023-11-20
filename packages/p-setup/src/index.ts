@@ -1,10 +1,14 @@
 import prompts from "prompts";
-import { blue, black, green } from "kolorist";
+import { blue, black, green, yellow, cyan } from "kolorist";
 
-type Framework = {
+type FrameworkPropperties = {
   name: string;
   display: string;
   color: (str: string | number) => string;
+};
+
+type Framework = FrameworkPropperties & {
+  variants: FrameworkPropperties[];
 };
 
 const FRAMEWORKS: Framework[] = [
@@ -12,16 +16,52 @@ const FRAMEWORKS: Framework[] = [
     name: "react",
     display: "React",
     color: blue,
+    variants: [
+      {
+        name: "react-js",
+        display: "React + JS",
+        color: yellow,
+      },
+      {
+        name: "react-ts",
+        display: "React + TS",
+        color: cyan,
+      },
+    ],
   },
   {
     name: "next",
     display: "Next",
     color: black,
+    variants: [
+      {
+        name: "next-js",
+        display: "Next + JS",
+        color: yellow,
+      },
+      {
+        name: "next-ts",
+        display: "Next + TS",
+        color: cyan,
+      },
+    ],
   },
   {
     name: "docusaurus",
     display: "Docusaurus",
     color: green,
+    variants: [
+      {
+        name: "docusaurus-js",
+        display: "Docusaurus + JS",
+        color: yellow,
+      },
+      {
+        name: "docusaurus-ts",
+        display: "Docusaurus + TS",
+        color: cyan,
+      },
+    ],
   },
 ];
 
