@@ -90,16 +90,30 @@ async function setupProject() {
         choices: FRAMEWORKS.map((framework) => {
           return {
             title: framework.color(framework.display),
-            value: framework.name,
+            value: framework,
           };
         }),
+        initial: 0,
+      },
+      {
+        type: "select",
+        name: "variant",
+        message: "Select a variant:",
+        choices: (prev: Framework) => {
+          return prev.variants.map((variant) => {
+            return {
+              title: variant.color(variant.display),
+              value: variant.name,
+            };
+          });
+        },
         initial: 0,
       },
     ]);
 
     console.table({
       projectName: validPackageName(projectFramework.projectName),
-      framework: projectFramework.framework,
+      pojectType: projectFramework.variant,
     });
   } catch (error) {
     console.log(error);
