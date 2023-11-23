@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import prompts from "prompts";
-import { blue, black, green, yellow, cyan, reset } from "kolorist";
+import { blue, black, green, yellow, cyan, reset, red } from "kolorist";
 
 type FrameworkPropperties = {
   name: string;
@@ -82,9 +82,16 @@ function createProject({
   projectName: string;
   frameWork: string;
 }) {
-  fs.mkdirSync(projectName, { recursive: true });
-
-  console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
+  if (fs.existsSync(projectName)) {
+    console.log(red("Project directory already exists"));
+    console.log(
+      yellow("Solution:"),
+      `delete ${green(projectName)} folder and try again.`
+    );
+  } else {
+    fs.mkdirSync(projectName, { recursive: true });
+    console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
+  }
 }
 
 async function setupProject() {
