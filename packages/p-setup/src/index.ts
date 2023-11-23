@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import prompts from "prompts";
 import { blue, black, green, yellow, cyan, reset } from "kolorist";
 
@@ -81,6 +82,8 @@ function createProject({
   projectName: string;
   frameWork: string;
 }) {
+  fs.mkdirSync(projectName, { recursive: true });
+
   console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
 }
 
