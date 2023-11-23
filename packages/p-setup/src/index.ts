@@ -1,5 +1,5 @@
 import prompts from "prompts";
-import { blue, black, green, yellow, cyan } from "kolorist";
+import { blue, black, green, yellow, cyan, reset } from "kolorist";
 
 type FrameworkPropperties = {
   name: string;
@@ -86,7 +86,7 @@ async function setupProject() {
       {
         type: "select",
         name: "framework",
-        message: "Select a framework:",
+        message: reset("Select a framework:"),
         choices: FRAMEWORKS.map((framework) => {
           return {
             title: framework.color(framework.display),
@@ -98,7 +98,7 @@ async function setupProject() {
       {
         type: "select",
         name: "variant",
-        message: "Select a variant:",
+        message: reset("Select a variant:"),
         choices: (prev: Framework) => {
           return prev.variants.map((variant) => {
             return {
