@@ -74,9 +74,21 @@ function validPackageName(projectName: string): string {
     .replace(/[^a-z\d\-~]+/g, "-");
 }
 
+function createProject({
+  projectName,
+  frameWork,
+}: {
+  projectName: string;
+  frameWork: string;
+}) {
+  console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
+}
+
 async function setupProject() {
+  let projectSetUp: prompts.Answers<"projectName" | "framework" | "variant">;
+
   try {
-    const projectFramework = await prompts([
+    projectSetUp = await prompts([
       {
         type: "text",
         name: "projectName",
@@ -112,8 +124,13 @@ async function setupProject() {
     ]);
 
     console.table({
-      projectName: validPackageName(projectFramework.projectName),
-      pojectType: projectFramework.variant,
+      projectName: validPackageName(projectSetUp.projectName),
+      pojectType: projectSetUp.variant,
+    });
+
+    createProject({
+      frameWork: projectSetUp.variant,
+      projectName: projectSetUp.projectName,
     });
   } catch (error) {
     console.log(error);
