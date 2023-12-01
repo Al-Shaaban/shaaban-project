@@ -19,13 +19,13 @@ const FRAMEWORKS: Framework[] = [
     color: blue,
     variants: [
       {
-        name: "react-js",
-        display: "React + JS",
+        name: "react-js-tw",
+        display: "React + JS + Tailwind",
         color: yellow,
       },
       {
-        name: "react-ts",
-        display: "React + TS",
+        name: "react-ts-tw",
+        display: "React + TS + Tailwind",
         color: cyan,
       },
     ],
@@ -36,13 +36,13 @@ const FRAMEWORKS: Framework[] = [
     color: black,
     variants: [
       {
-        name: "next-js",
-        display: "Next + JS",
+        name: "next-js-tw",
+        display: "Next + JS + Tailwind",
         color: yellow,
       },
       {
-        name: "next-ts",
-        display: "Next + TS",
+        name: "next-ts-tw",
+        display: "Next + TS + Tailwind",
         color: cyan,
       },
     ],
@@ -90,7 +90,7 @@ function createProject({
         `delete ${green(projectName)} folder and try again.`
       );
     } else {
-      console.log(`creating project inside ${green(projectName)} folder.`)
+      console.log(`creating project inside ${green(projectName)} folder.`);
     }
   } else {
     fs.mkdirSync(projectName, { recursive: true });
