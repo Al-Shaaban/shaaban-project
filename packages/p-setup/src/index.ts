@@ -83,11 +83,15 @@ function createProject({
   frameWork: string;
 }) {
   if (fs.existsSync(projectName)) {
-    console.log(red("Project directory already exists"));
-    console.log(
-      yellow("Solution:"),
-      `delete ${green(projectName)} folder and try again.`
-    );
+    if (fs.readdirSync(projectName, { recursive: true })) {
+      console.log(red("Project directory already exists"));
+      console.log(
+        yellow("Solution:"),
+        `delete ${green(projectName)} folder and try again.`
+      );
+    } else {
+      console.log(`creating project inside ${green(projectName)} folder.`)
+    }
   } else {
     fs.mkdirSync(projectName, { recursive: true });
     console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
