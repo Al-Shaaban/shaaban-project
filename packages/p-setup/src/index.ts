@@ -75,6 +75,11 @@ function validPackageName(projectName: string): string {
     .replace(/[^a-z\d\-~]+/g, "-");
 }
 
+function isEmpty(path: string) {
+  const files = fs.readdirSync(path, { recursive: true });
+  return files.length === 0 || (files.length === 1 && files[0] === ".git");
+}
+
 function createProject({
   projectName,
   frameWork,
@@ -83,14 +88,15 @@ function createProject({
   frameWork: string;
 }) {
   if (fs.existsSync(projectName)) {
-    if (fs.readdirSync(projectName, { recursive: true })) {
+    if (isEmpty(projectName)) {
+      console.log(`creating project inside ${green(projectName)} folder.`);
+      // todo: create project inside existing folder.
+    } else {
       console.log(red("Project directory already exists"));
       console.log(
         yellow("Solution:"),
         `delete ${green(projectName)} folder and try again.`
       );
-    } else {
-      console.log(`creating project inside ${green(projectName)} folder.`);
     }
   } else {
     fs.mkdirSync(projectName, { recursive: true });
