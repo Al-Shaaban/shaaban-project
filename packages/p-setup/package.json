@@ -16,7 +16,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "unbuild --stub"
+    "dev": "unbuild --stub",
+    "build": "unbuild"
   },
   "dependencies": {
     "@types/prompts": "^2.4.8",

@@ -19,13 +19,8 @@ const FRAMEWORKS: Framework[] = [
     color: blue,
     variants: [
       {
-        name: "react-js-tw",
-        display: "React + JS + Tailwind",
-        color: yellow,
-      },
-      {
         name: "react-ts-tw",
-        display: "React + TS + Tailwind",
+        display: "Vite",
         color: cyan,
       },
     ],
@@ -36,31 +31,21 @@ const FRAMEWORKS: Framework[] = [
     color: black,
     variants: [
       {
-        name: "next-js-tw",
-        display: "Next + JS + Tailwind",
-        color: yellow,
-      },
-      {
         name: "next-ts-tw",
-        display: "Next + TS + Tailwind",
+        display: "Pure",
         color: cyan,
       },
     ],
   },
   {
-    name: "docusaurus",
-    display: "Docusaurus",
-    color: green,
+    name: "nest",
+    display: "Nest",
+    color: red,
     variants: [
       {
-        name: "docusaurus-js",
-        display: "Docusaurus + JS",
-        color: yellow,
-      },
-      {
-        name: "docusaurus-ts",
-        display: "Docusaurus + TS",
-        color: cyan,
+        name: "nest-cognito",
+        display: "auth",
+        color: red,
       },
     ],
   },
@@ -157,4 +142,36 @@ async function setupProject() {
   }
 }
 
-setupProject();
+async function addComponent() {
+  const componentChoices = ["Header", "Footer", "Sidebar"]; // Example component names
+
+  const { componentName } = await prompts({
+    type: "select",
+    name: "componentName",
+    message: "Select a component to add:",
+    choices: componentChoices.map((name) => ({ title: name, value: name })),
+  });
+
+  // Create file and add component logic here
+  console.log(`Adding ${green(componentName)} component.`);
+}
+
+async function main() {
+  const { action } = await prompts({
+    type: "select",
+    name: "action",
+    message: "What do you want me to help you with today?",
+    choices: [
+      { title: "Setup a project", value: "setup" },
+      { title: "Add a component", value: "addComponent" },
+    ],
+  });
+
+  if (action === "setup") {
+    await setupProject();
+  } else if (action === "addComponent") {
+    await addComponent();
+  }
+}
+
+main();
