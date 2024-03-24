@@ -73,16 +73,18 @@ function createProject({
   frameWork: string;
 }) {
   if (fs.existsSync(projectName)) {
-    if (isEmpty(projectName)) {
-      console.log(`creating project inside ${green(projectName)} folder.`);
-      // todo: create project inside existing folder.
-    } else {
+    if (!isEmpty(projectName)) {
       console.log(red("Project directory already exists"));
       console.log(
         yellow("Solution:"),
         `delete ${green(projectName)} folder and try again.`
       );
+
+      return;
     }
+
+    fs.mkdirSync(projectName, { recursive: true });
+    console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
   } else {
     fs.mkdirSync(projectName, { recursive: true });
     console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
