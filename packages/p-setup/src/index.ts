@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import path from "node:path";
 import prompts from "prompts";
 import { blue, black, green, yellow, cyan, reset, red } from "kolorist";
 
@@ -12,6 +13,7 @@ type Framework = FrameworkPropperties & {
   variants: FrameworkPropperties[];
 };
 
+const cwd = process.cwd();
 const FRAMEWORKS: Framework[] = [
   {
     name: "react",
@@ -72,23 +74,24 @@ function createProject({
   projectName: string;
   frameWork: string;
 }) {
-  if (fs.existsSync(projectName)) {
-    if (!isEmpty(projectName)) {
-      console.log(red("Project directory already exists"));
-      console.log(
-        yellow("Solution:"),
-        `delete ${green(projectName)} folder and try again.`
-      );
+  const root = path.join(cwd, projectName);
 
-      return;
-    }
+  console.log(root);
 
-    fs.mkdirSync(projectName, { recursive: true });
-    console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
-  } else {
-    fs.mkdirSync(projectName, { recursive: true });
-    console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
+  if (!fs.existsSync(root)) return;
+
+  if (!isEmpty(root)) {
+    console.log(red("Project directory already exists"));
+    console.log(
+      yellow("Solution:"),
+      `delete ${green(projectName)} folder and try again.`
+    );
+
+    return;
   }
+
+  fs.mkdirSync(projectName, { recursive: true });
+  console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
 }
 
 async function setupProject() {
