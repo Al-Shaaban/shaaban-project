@@ -21,7 +21,7 @@ const FRAMEWORKS: Framework[] = [
     color: blue,
     variants: [
       {
-        name: "react-ts-tw",
+        name: "react-vite-ts-tw",
         display: "Vite",
         color: cyan,
       },
@@ -52,6 +52,9 @@ const FRAMEWORKS: Framework[] = [
     ],
   },
 ];
+const renameFiles: Record<string, string | undefined> = {
+  _gitignore: ".gitignore",
+};
 
 function validPackageName(projectName: string): string {
   return projectName
@@ -75,10 +78,9 @@ function createProject({
   frameWork: string;
 }) {
   const root = path.join(cwd, projectName);
+  const template = `template-${frameWork}`;
 
-  console.log(root);
-
-  if (!fs.existsSync(root)) return;
+  if (!fs.existsSync(root)) fs.mkdirSync(projectName, { recursive: true });
 
   if (!isEmpty(root)) {
     console.log(red("Project directory already exists"));
@@ -90,7 +92,39 @@ function createProject({
     return;
   }
 
-  fs.mkdirSync(projectName, { recursive: true });
+  const files = fs.readdirSync(template);
+
+  function copyDir(srcDir: string, destDir: string) {
+    fs.mkdirSync(destDir, { recursive: true });
+    for (const file of fs.readdirSync(srcDir)) {
+      const srcFile = path.resolve(srcDir, file);
+      const destFile = path.resolve(destDir, file);
+      copy(srcFile, destFile);
+    }
+  }
+
+  function copy(src: string, dest: string) {
+    const stat = fs.statSync(src);
+    if (stat.isDirectory()) {
+      copyDir(src, dest);
+    } else {
+      fs.copyFileSync(src, dest);
+    }
+  }
+
+  const write = (file: string, content?: string) => {
+    const targetPath = path.join(root, renameFiles[file] ?? file);
+    if (content) {
+      fs.writeFileSync(targetPath, content);
+    } else {
+      copy(path.join(template, file), targetPath);
+    }
+  };
+
+  for (const file of files.filter((f) => f !== "package.json")) {
+    write(file);
+  }
+
   console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
 }
 
@@ -133,14 +167,14 @@ async function setupProject() {
       },
     ]);
 
-    console.table({
-      projectName: validPackageName(projectSetUp.projectName),
-      pojectType: projectSetUp.variant,
-    });
-
     createProject({
       frameWork: projectSetUp.variant,
       projectName: projectSetUp.projectName,
+    });
+
+    console.table({
+      projectName: validPackageName(projectSetUp.projectName),
+      pojectType: projectSetUp.variant,
     });
   } catch (error) {
     console.log(error);
@@ -148,7 +182,7 @@ async function setupProject() {
 }
 
 async function addComponent() {
-  const componentChoices = ["Header", "Footer", "Sidebar"]; // Example component names
+  const componentChoices = ["Header", "Footer", "Sidebar"];
 
   const { componentName } = await prompts({
     type: "select",
@@ -172,11 +206,8 @@ async function main() {
     ],
   });
 
-  if (action === "setup") {
-    await setupProject();
-  } else if (action === "addComponent") {
-    await addComponent();
-  }
+  if (action === "setup") await setupProject();
+  else if (action === "addComponent") await addComponent();
 }
 
 main();
