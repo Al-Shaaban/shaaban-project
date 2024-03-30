@@ -7,8 +7,8 @@
   "license": "ISC",
   "author": "",
   "bin": {
-    "shaaban-project": "index.js",
-    "sb-p": "index.js"
+    "shaaban": "index.js",
+    "sb": "index.js"
   },
   "files": [
     "index.js",
