@@ -8,7 +8,7 @@
   "author": "",
   "bin": {
     "shaaban-project": "index.js",
-    "sh-p": "index.js"
+    "sb-p": "index.js"
   },
   "files": [
     "index.js",
