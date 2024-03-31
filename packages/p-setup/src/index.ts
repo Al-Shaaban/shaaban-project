@@ -27,30 +27,6 @@ const FRAMEWORKS: Framework[] = [
       },
     ],
   },
-  {
-    name: "next",
-    display: "Next",
-    color: black,
-    variants: [
-      {
-        name: "next-ts-tw",
-        display: "Pure",
-        color: cyan,
-      },
-    ],
-  },
-  {
-    name: "nest",
-    display: "Nest",
-    color: red,
-    variants: [
-      {
-        name: "nest-cognito",
-        display: "auth",
-        color: red,
-      },
-    ],
-  },
 ];
 const renameFiles: Record<string, string | undefined> = {
   _gitignore: ".gitignore",
