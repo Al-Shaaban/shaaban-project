@@ -24,7 +24,7 @@ export default defineConfig({
         replacement: fileURLToPath(new URL('./src/lib/utils', import.meta.url))
       },
       {
-        find: '@types',
+        find: '@type',
         replacement: fileURLToPath(new URL('./src/lib/types', import.meta.url))
       },
       {

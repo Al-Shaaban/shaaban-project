@@ -27,7 +27,7 @@
       "@styles/*": ["./src/lib/styles/*"],
       "@hooks/*": ["./src/lib/hooks/*"],
       "@utils/*": ["./src/lib/utils/*"],
-      "@types/*": ["./src/lib/types/*"],
+      "@type/*": ["./src/lib/types/*"],
       "@constants/*": ["./src/lib/constants/*"],
       "@contexts/*": ["./src/lib/contexts/*"]
     }
