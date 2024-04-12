@@ -21,6 +21,7 @@
     "noFallthroughCasesInSwitch": true,
 
     /* import alias */
+    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@styles/*": ["./src/lib/styles/*"]
