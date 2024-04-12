@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
+import { black, blue, cyan, green, red, reset, yellow } from "kolorist";
 import prompts from "prompts";
-import { blue, black, green, yellow, cyan, reset, red } from "kolorist";
 
 type FrameworkPropperties = {
   name: string;
@@ -62,7 +62,7 @@ function createProject({
     console.log(red("Project directory already exists"));
     console.log(
       yellow("Solution:"),
-      `delete ${green(projectName)} folder and try again.`
+      `delete ${green(projectName)} folder and try again.`,
     );
 
     return;

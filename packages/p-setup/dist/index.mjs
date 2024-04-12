@@ -2,11 +2,14 @@ import jiti from "file:///C:/Users/user/OneDrive/Documents/Abed/shaaban-org/shaa
 
 /** @type {import("C:/Users/user/OneDrive/Documents/Abed/shaaban-org/shaaban-project/packages/p-setup/src/index")} */
 const _module = jiti(null, {
-  "esmResolve": true,
-  "interopDefault": true,
-  "alias": {
-    "p-setup": "C:/Users/user/OneDrive/Documents/Abed/shaaban-org/shaaban-project/packages/p-setup"
-  }
-})("C:/Users/user/OneDrive/Documents/Abed/shaaban-org/shaaban-project/packages/p-setup/src/index.ts");
+  esmResolve: true,
+  interopDefault: true,
+  alias: {
+    "p-setup":
+      "C:/Users/user/OneDrive/Documents/Abed/shaaban-org/shaaban-project/packages/p-setup",
+  },
+})(
+  "C:/Users/user/OneDrive/Documents/Abed/shaaban-org/shaaban-project/packages/p-setup/src/index.ts"
+);
 
 export default _module;

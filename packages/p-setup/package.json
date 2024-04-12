@@ -10,11 +10,7 @@
     "shaaban": "index.js",
     "sb": "index.js"
   },
-  "files": [
-    "index.js",
-    "template-*",
-    "dist"
-  ],
+  "files": ["index.js", "template-*", "dist"],
   "scripts": {
     "dev": "unbuild --stub",
     "build": "unbuild"
