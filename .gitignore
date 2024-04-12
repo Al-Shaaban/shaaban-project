@@ -6,6 +6,7 @@ template-*
 # next.js
 .next/
 out/
+dist/
 build
 
 # debug
