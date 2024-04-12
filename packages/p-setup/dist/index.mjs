@@ -9,7 +9,7 @@ const _module = jiti(null, {
       "C:/Users/user/OneDrive/Documents/Abed/shaaban-org/shaaban-project/packages/p-setup",
   },
 })(
-  "C:/Users/user/OneDrive/Documents/Abed/shaaban-org/shaaban-project/packages/p-setup/src/index.ts"
+  "C:/Users/user/OneDrive/Documents/Abed/shaaban-org/shaaban-project/packages/p-setup/src/index.ts",
 );
 
 export default _module;
