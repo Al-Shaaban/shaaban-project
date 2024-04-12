@@ -26,6 +26,14 @@ export default defineConfig({
       {
         find: '@types',
         replacement: fileURLToPath(new URL('./src/lib/types', import.meta.url))
+      },
+      {
+        find: '@constants',
+        replacement: fileURLToPath(new URL('./src/lib/constants', import.meta.url))
+      },
+      {
+        find: '@contexts',
+        replacement: fileURLToPath(new URL('./src/lib/contexts', import.meta.url))
       }
     ]
   }
