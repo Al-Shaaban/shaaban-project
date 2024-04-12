@@ -1,0 +1,24 @@
+{
+  "singleQuote": true,
+  "useTabs": false,
+  "trailingComma": "none",
+  "plugins": [
+    "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss"
+  ],
+  "arrowParens": "always",
+  "printWidth": 90,
+  "semi": false,
+  "tabWidth": 2,
+  "importOrder": [
+    "^(react/(.*)$)|^(react$)",
+    "<THIRD_PARTY_MODULES>",
+    "",
+    "^@/components/ui/(.*)$",
+    "^components/ui/(.*)$",
+    "",
+    "^~/(.*)$",
+    "^[./]"
+  ],
+  "proseWrap": "always"
+}
