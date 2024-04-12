@@ -1,5 +1,14 @@
-import type { Route } from '@type/index'
+import { Paths } from '@constants/paths'
+import type { Route } from '@type/routes'
 
-const routes: Route[] = [{ path: '*', element: 'page not found' }]
+import HomePage from './pages/home'
+
+const routes: Route[] = [
+  {
+    path: Paths.HOME_PAGE,
+    element: <HomePage />
+  },
+  { path: '*', element: 'page not found' }
+]
 
 export default routes
