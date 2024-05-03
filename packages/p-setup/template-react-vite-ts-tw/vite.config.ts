@@ -9,31 +9,31 @@ export default defineConfig({
     alias: [
       {
         find: '@',
-        replacement: fileURLToPath(new URL('./src', import.meta.url))
+        replacement: fileURLToPath(new URL('./src'))
       },
       {
         find: '@styles',
-        replacement: fileURLToPath(new URL('./src/lib/styles', import.meta.url))
+        replacement: fileURLToPath(new URL('./src/lib/styles'))
       },
       {
         find: '@hooks',
-        replacement: fileURLToPath(new URL('./src/lib/hooks', import.meta.url))
+        replacement: fileURLToPath(new URL('./src/lib/hooks'))
       },
       {
         find: '@utils',
-        replacement: fileURLToPath(new URL('./src/lib/utils', import.meta.url))
+        replacement: fileURLToPath(new URL('./src/lib/utils'))
       },
       {
         find: '@type',
-        replacement: fileURLToPath(new URL('./src/lib/types', import.meta.url))
+        replacement: fileURLToPath(new URL('./src/lib/types'))
       },
       {
         find: '@constants',
-        replacement: fileURLToPath(new URL('./src/lib/constants', import.meta.url))
+        replacement: fileURLToPath(new URL('./src/lib/constants'))
       },
       {
         find: '@contexts',
-        replacement: fileURLToPath(new URL('./src/lib/contexts', import.meta.url))
+        replacement: fileURLToPath(new URL('./src/lib/contexts'))
       }
     ]
   }

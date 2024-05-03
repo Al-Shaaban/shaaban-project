@@ -2,9 +2,7 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "vet": "biome check --apply ."
+    "dev": "turbo run dev"
   },
   "devDependencies": {
     "@biomejs/biome": "1.6.4",
@@ -12,6 +10,6 @@
     "tsconfig": "workspace:*",
     "turbo": "latest"
   },
-  "packageManager": "pnpm@8.6.10",
+  "packageManager": "pnpm@9.0.6",
   "name": "shaaban-project"
 }
