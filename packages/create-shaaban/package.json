@@ -1,0 +1,38 @@
+{
+  "name": "create-shaaban",
+  "version": "1.0.7",
+  "type": "module",
+  "license": "MIT",
+  "author": "Abed Al Ghani Mosbah Shaaban",
+  "bin": {
+    "create-shaaban": "index.js",
+    "cvs": "index.js"
+  },
+  "files": [
+    "index.js",
+    "template-react-vite-ts-tw",
+    "dist"
+  ],
+  "keywords": [
+    "al-shaaban",
+    "shaaban",
+    "create-shaaban"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Al-Shaaban/shaaban-project.git",
+    "directory": "packages/create-shaaban"
+  },
+  "homepage": "https://github.com/Al-Shaaban/shaaban-project",
+  "scripts": {
+    "dev": "unbuild --stub",
+    "build": "unbuild",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@types/prompts": "^2.4.8",
+    "kolorist": "^1.8.0",
+    "prompts": "^2.4.2",
+    "unbuild": "^2.0.0"
+  }
+}

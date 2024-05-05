@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
-import { black, blue, cyan, green, red, reset, yellow } from "kolorist";
+import { blue, cyan, green, red, reset, yellow } from "kolorist";
+import { fileURLToPath } from "node:url";
 import prompts from "prompts";
 
 type FrameworkPropperties = {
@@ -54,7 +55,11 @@ function createProject({
   frameWork: string;
 }) {
   const root = path.join(cwd, projectName);
-  const template = `template-${frameWork}`;
+  const template = path.resolve(
+    fileURLToPath(import.meta.url),
+    "../..",
+    `template-${frameWork}`
+  );
 
   if (!fs.existsSync(root)) fs.mkdirSync(projectName, { recursive: true });
 
@@ -62,7 +67,7 @@ function createProject({
     console.log(red("Project directory already exists"));
     console.log(
       yellow("Solution:"),
-      `delete ${green(projectName)} folder and try again.`,
+      `delete ${green(projectName)} folder and try again.`
     );
 
     return;
@@ -100,6 +105,14 @@ function createProject({
   for (const file of files.filter((f) => f !== "package.json")) {
     write(file);
   }
+
+  const pkg = JSON.parse(
+    fs.readFileSync(path.join(template, "package.json"), "utf-8")
+  );
+
+  pkg.name = projectName;
+
+  write("package.json", `${JSON.stringify(pkg, null, 2)}\n`);
 
   console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
 }
@@ -145,45 +158,41 @@ async function setupProject() {
 
     createProject({
       frameWork: projectSetUp.variant,
-      projectName: projectSetUp.projectName,
-    });
-
-    console.table({
       projectName: validPackageName(projectSetUp.projectName),
-      pojectType: projectSetUp.variant,
     });
   } catch (error) {
     console.log(error);
   }
 }
 
-async function addComponent() {
-  const componentChoices = ["Header", "Footer", "Sidebar"];
+// async function addComponent() {
+//   const componentChoices = ["Header", "Footer", "Sidebar"];
 
-  const { componentName } = await prompts({
-    type: "select",
-    name: "componentName",
-    message: "Select a component to add:",
-    choices: componentChoices.map((name) => ({ title: name, value: name })),
-  });
+//   const { componentName } = await prompts({
+//     type: "select",
+//     name: "componentName",
+//     message: "Select a component to add:",
+//     choices: componentChoices.map((name) => ({ title: name, value: name })),
+//   });
 
-  // Create file and add component logic here
-  console.log(`Adding ${green(componentName)} component.`);
-}
+//   // Create file and add component logic here
+//   console.log(`Adding ${green(componentName)} component.`);
+// }
 
 async function main() {
-  const { action } = await prompts({
-    type: "select",
-    name: "action",
-    message: "What do you want me to help you with today?",
-    choices: [
-      { title: "Setup a project", value: "setup" },
-      { title: "Add a component", value: "addComponent" },
-    ],
-  });
+  // const { action } = await prompts({
+  //   type: "select",
+  //   name: "action",
+  //   message: "What do you want me to help you with today?",
+  //   choices: [
+  //     { title: "Setup a project", value: "setup" },
+  //     { title: "Add a component", value: "addComponent" },
+  //   ],
+  // });
 
-  if (action === "setup") await setupProject();
-  else if (action === "addComponent") await addComponent();
+  await setupProject();
+  // if (action === "setup") await setupProject();
+  // else if (action === "addComponent") await addComponent();
 }
 
 main();
