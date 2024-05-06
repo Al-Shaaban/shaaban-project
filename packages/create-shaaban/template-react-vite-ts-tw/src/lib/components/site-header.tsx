@@ -3,6 +3,7 @@ import GithubIcon from '~icons/github'
 import { Avatar, AvatarFallback, AvatarImage } from '~ui/avatar'
 import { buttonVariants } from '~ui/button'
 import { cn } from '~utils/functions/misc.functions'
+import { ThemeToggle } from '~utils/theme/theme-toggle'
 import { Link } from 'react-router-dom'
 
 export default function SiteHeader() {
@@ -23,10 +24,8 @@ export default function SiteHeader() {
           </span>
         </Link>
 
-        <div
-          className={'flex flex-1 items-center justify-between space-x-2 md:justify-end'}
-        >
-          <nav className={'flex items-center'}>
+        <div className={'flex flex-1 items-center justify-end space-x-2'}>
+          <nav className={'flex items-center gap-3'}>
             <Link
               to={'https://github.com/Al-Shaaban/shaaban-project'}
               target={'_blank'}
@@ -34,6 +33,8 @@ export default function SiteHeader() {
             >
               <GithubIcon className={'h-6 w-6'} />
             </Link>
+
+            <ThemeToggle />
           </nav>
         </div>
       </div>
