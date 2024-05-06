@@ -92,10 +92,13 @@ export function CarouselImage({ height = 168, width = 300, ...props }: Props) {
                   <div
                     key={index}
                     className={cn(
-                      'flex h-2 w-2 items-center justify-center rounded-full',
-                      current === index + 1 ? 'bg-primary' : 'bg-muted'
+                      'flex h-2 w-2 items-center justify-center rounded-full bg-muted-foreground/50'
                     )}
-                  />
+                  >
+                    {current === index + 1 && (
+                      <div className={'h-1 w-1 rounded-full bg-primary'} />
+                    )}
+                  </div>
                 )
               })}
             </div>
@@ -147,10 +150,13 @@ export function CarouselImage({ height = 168, width = 300, ...props }: Props) {
                     <div
                       key={index}
                       className={cn(
-                        'flex h-2 w-2 items-center justify-center rounded-full',
-                        current === index + 1 ? 'bg-primary' : 'bg-muted'
+                        'flex h-2 w-2 items-center justify-center rounded-full bg-muted-foreground/50'
                       )}
-                    />
+                    >
+                      {current === index + 1 && (
+                        <div className={'h-1 w-1 rounded-full bg-primary'} />
+                      )}
+                    </div>
                   )
                 })}
               </div>
