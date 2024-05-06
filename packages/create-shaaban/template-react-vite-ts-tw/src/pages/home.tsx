@@ -1,6 +1,5 @@
-import SiteHeader from '~components/site-header'
 import LaptopIcon from '~icons/laptop'
-import ImageCarousel from '~ui/carousel/carousel-image'
+import { CarouselImage } from '~ui/carousel/carousel-image'
 import { InputDate } from '~ui/inputs/input-date'
 import { InputDateRange } from '~ui/inputs/input-date-range'
 import { InputFile } from '~ui/inputs/input-file'
@@ -12,12 +11,19 @@ import { InputTextArea } from '~ui/inputs/input-textarea'
 
 export default function HomePage() {
   return (
-    <div className={'container flex flex-col gap-3'}>
-      <SiteHeader />
+    <div className={'flex flex-col gap-3'}>
+      <h1 className={'text-center text-3xl transition-colors ease-in-out md:text-5xl'}>
+        Create <span className={'text-blue-600'}>Shaaban Project</span>
+      </h1>
+      <p className={'flex flex-wrap justify-center gap-1 text-center'}>
+        Build Your Next
+        <span className={'border-b-2 border-orange-600 italic'}>Million $Dollar</span>
+        Project with 3 steps
+      </p>
 
       <div className={'grid grid-cols-2 gap-3'}>
         <div className={'col-span-2'}>
-          <ImageCarousel
+          <CarouselImage
             images={[
               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo41KoJghc9dv9LmQP3rp8Bs6ECcowrRR7eVJxGvbWFw&s',
               'https://file.kelleybluebookimages.com/kbb/base/house/2021/2021-Lamborghini-Aventador-FrontSide_LBAVSVJ2101_640x480.jpg?downsize=382:*',

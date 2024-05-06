@@ -20,7 +20,7 @@ type Props = {
   arrowsHidden?: boolean
 }
 
-export default function ImageCarousel({ height = 168, width = 300, ...props }: Props) {
+export function CarouselImage({ height = 168, width = 300, ...props }: Props) {
   const [api, setApi] = useState<CarouselApi>()
   const [current, setCurrent] = useState<number>(0)
   const [count, setCount] = useState<number>(0)

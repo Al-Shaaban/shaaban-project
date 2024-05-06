@@ -33,8 +33,10 @@
       "~utils/*": ["./src/lib/utils/*"],
       "~types/*": ["./src/lib/types/*"],
       "~constants/*": ["./src/lib/constants/*"],
-      "~contexts/*": ["./src/lib/contexts/*"],
-      "~components/*": ["./src/lib/components/*"]
+      "~contexts/*": ["src/lib/utils/contexts/*"],
+      "~components/*": ["./src/lib/components/*"],
+      "~guards/*": ["src/lib/utils/guards/*"],
+      "~layouts/*": ["./src/lib/layouts/*"]
     }
   },
   "include": ["src"],

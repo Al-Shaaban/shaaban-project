@@ -57,6 +57,14 @@ export default defineConfig({
       {
         find: '~components',
         replacement: fileURLToPath(new URL('./src/lib/components', import.meta.url))
+      },
+      {
+        find: '~guards',
+        replacement: fileURLToPath(new URL('./src/lib/guards', import.meta.url))
+      },
+      {
+        find: '~layouts',
+        replacement: fileURLToPath(new URL('./src/lib/layouts', import.meta.url))
       }
     ]
   }

@@ -1,3 +1,4 @@
+import { siteConfig } from '~constants/site-config'
 import wretch from 'wretch'
 import type { QueryStringAddon as WretchQueryStringAddon } from 'wretch/addons'
 import QueryStringAddon from 'wretch/addons/queryString'
@@ -36,9 +37,7 @@ declare module 'wretch' {
   }
 }
 
-export const rawRestApiClient = wretch(`${process.env.NEXT_PUBLIC_BASE_URL}`).addon(
-  QueryStringAddon
-)
+export const rawRestApiClient = wretch(`${siteConfig.apiBaseUrl}`).addon(QueryStringAddon)
 
 export const restApiClient = rawRestApiClient
   .options({ credentials: 'include' })
