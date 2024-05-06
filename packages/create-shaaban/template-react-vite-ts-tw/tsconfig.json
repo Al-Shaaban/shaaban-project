@@ -23,13 +23,18 @@
     /* import alias */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@styles/*": ["./src/lib/styles/*"],
-      "@hooks/*": ["./src/lib/hooks/*"],
-      "@utils/*": ["./src/lib/utils/*"],
-      "@type/*": ["./src/lib/types/*"],
-      "@constants/*": ["./src/lib/constants/*"],
-      "@contexts/*": ["./src/lib/contexts/*"]
+      "~/*": ["./src/*"],
+      "~pages/*": ["./src/pages/*"],
+      "~api/*": ["./src/api/*"],
+      "~styles/*": ["./src/lib/styles/*"],
+      "~ui/*": ["./src/lib/ui/*"],
+      "~hooks/*": ["./src/lib/hooks/*"],
+      "~icons/*": ["./src/lib/icons/*"],
+      "~utils/*": ["./src/lib/utils/*"],
+      "~types/*": ["./src/lib/types/*"],
+      "~constants/*": ["./src/lib/constants/*"],
+      "~contexts/*": ["./src/lib/contexts/*"],
+      "~components/*": ["./src/lib/components/*"]
     }
   },
   "include": ["src"],

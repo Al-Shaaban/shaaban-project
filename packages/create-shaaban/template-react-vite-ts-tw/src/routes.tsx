@@ -1,7 +1,6 @@
-import { Paths } from '@constants/paths'
-import type { Route } from '@type/routes'
-
-import HomePage from './pages/home'
+import { Paths } from '~constants/paths'
+import HomePage from '~pages/home'
+import type { Route } from '~types/routes'
 
 const routes: Route[] = [
   {

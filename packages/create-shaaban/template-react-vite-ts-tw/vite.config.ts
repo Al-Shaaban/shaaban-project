@@ -5,35 +5,58 @@ import { defineConfig } from 'vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
+  server: {
+    port: 3000
+  },
   resolve: {
     alias: [
       {
-        find: '@',
-        replacement: fileURLToPath(new URL('./src'))
+        find: '~',
+        replacement: fileURLToPath(new URL('./src', import.meta.url))
       },
       {
-        find: '@styles',
-        replacement: fileURLToPath(new URL('./src/lib/styles'))
+        find: '~pages',
+        replacement: fileURLToPath(new URL('./src/pages', import.meta.url))
       },
       {
-        find: '@hooks',
-        replacement: fileURLToPath(new URL('./src/lib/hooks'))
+        find: '~api',
+        replacement: fileURLToPath(new URL('./src/api', import.meta.url))
       },
       {
-        find: '@utils',
-        replacement: fileURLToPath(new URL('./src/lib/utils'))
+        find: '~styles',
+        replacement: fileURLToPath(new URL('./src/lib/styles', import.meta.url))
       },
       {
-        find: '@type',
-        replacement: fileURLToPath(new URL('./src/lib/types'))
+        find: '~ui',
+        replacement: fileURLToPath(new URL('./src/lib/ui', import.meta.url))
       },
       {
-        find: '@constants',
-        replacement: fileURLToPath(new URL('./src/lib/constants'))
+        find: '~hooks',
+        replacement: fileURLToPath(new URL('./src/lib/hooks', import.meta.url))
       },
       {
-        find: '@contexts',
-        replacement: fileURLToPath(new URL('./src/lib/contexts'))
+        find: '~utils',
+        replacement: fileURLToPath(new URL('./src/lib/utils', import.meta.url))
+      },
+      {
+        find: '~icons',
+        replacement: fileURLToPath(new URL('./src/lib/icons', import.meta.url))
+      },
+      {
+        find: '~types',
+        replacement: fileURLToPath(new URL('./src/lib/types', import.meta.url))
+      },
+      {
+        find: '~constants',
+        replacement: fileURLToPath(new URL('./src/lib/constants', import.meta.url))
+      },
+      {
+        find: '~contexts',
+        replacement: fileURLToPath(new URL('./src/lib/contexts', import.meta.url))
+      },
+      {
+        find: '~components',
+        replacement: fileURLToPath(new URL('./src/lib/components', import.meta.url))
       }
     ]
   }
