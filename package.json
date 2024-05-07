@@ -1,6 +1,11 @@
 {
   "name": "shaaban-project",
   "private": true,
+  "engines": {
+    "node": "21.x",
+    "pnpm": "9.x"
+  },
+  "packageManager": "pnpm@9.0.6",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
