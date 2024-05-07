@@ -5,7 +5,8 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "format": "prettier --write . --list-different",
-    "vet": "turbo run vet"
+    "vet": "turbo run vet",
+    "publish-packages": "turbo run vet && changeset version && changeset publish"
   },
   "dependencies": {
     "@biomejs/biome": "1.6.4",
