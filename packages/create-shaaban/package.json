@@ -1,6 +1,6 @@
 {
   "name": "create-shaaban",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "type": "module",
   "license": "MIT",
   "author": "Abed Al Ghani Mosbah Shaaban",
@@ -14,9 +14,9 @@
     "dist"
   ],
   "keywords": [
+    "create-shaaban",
     "al-shaaban",
-    "shaaban",
-    "create-shaaban"
+    "shaaban"
   ],
   "repository": {
     "type": "git",
