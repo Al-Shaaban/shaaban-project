@@ -4,9 +4,10 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "format": "prettier --write . --list-different",
     "vet": "turbo run vet"
   },
-  "devDependencies": {
+  "dependencies": {
     "@biomejs/biome": "1.6.4",
     "@ianvs/prettier-plugin-sort-imports": "^4.2.1",
     "eslint": "^8.48.0",

@@ -1,167 +1,162 @@
-import fs from "node:fs";
-import path from "node:path";
-import { blue, cyan, green, red, reset, yellow } from "kolorist";
-import { fileURLToPath } from "node:url";
-import prompts from "prompts";
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { blue, cyan, green, red, reset, yellow } from 'kolorist'
+import prompts from 'prompts'
 
 type FrameworkPropperties = {
-  name: string;
-  display: string;
-  color: (str: string | number) => string;
-};
+  name: string
+  display: string
+  color: (str: string | number) => string
+}
 
 type Framework = FrameworkPropperties & {
-  variants: FrameworkPropperties[];
-};
+  variants: FrameworkPropperties[]
+}
 
-const cwd = process.cwd();
+const cwd = process.cwd()
 const FRAMEWORKS: Framework[] = [
   {
-    name: "react",
-    display: "React",
+    name: 'react',
+    display: 'React',
     color: blue,
     variants: [
       {
-        name: "react-vite-ts-tw",
-        display: "Vite",
-        color: cyan,
-      },
-    ],
-  },
-];
+        name: 'react-vite-ts-tw',
+        display: 'Vite',
+        color: cyan
+      }
+    ]
+  }
+]
 const renameFiles: Record<string, string | undefined> = {
-  _gitignore: ".gitignore",
-};
+  _gitignore: '.gitignore'
+}
 
 function validPackageName(projectName: string): string {
   return projectName
     .trim()
     .toLowerCase()
-    .replace(/\s+/g, "-")
-    .replace(/^[._]/, "")
-    .replace(/[^a-z\d\-~]+/g, "-");
+    .replace(/\s+/g, '-')
+    .replace(/^[._]/, '')
+    .replace(/[^a-z\d\-~]+/g, '-')
 }
 
 function isEmpty(path: string) {
-  const files = fs.readdirSync(path, { recursive: true });
-  return files.length === 0 || (files.length === 1 && files[0] === ".git");
+  const files = fs.readdirSync(path, { recursive: true })
+  return files.length === 0 || (files.length === 1 && files[0] === '.git')
 }
 
 function createProject({
   projectName,
-  frameWork,
+  frameWork
 }: {
-  projectName: string;
-  frameWork: string;
+  projectName: string
+  frameWork: string
 }) {
-  const root = path.join(cwd, projectName);
+  const root = path.join(cwd, projectName)
   const template = path.resolve(
     fileURLToPath(import.meta.url),
-    "../..",
+    '../..',
     `template-${frameWork}`
-  );
+  )
 
-  if (!fs.existsSync(root)) fs.mkdirSync(projectName, { recursive: true });
+  if (!fs.existsSync(root)) fs.mkdirSync(projectName, { recursive: true })
 
   if (!isEmpty(root)) {
-    console.log(red("Project directory already exists"));
-    console.log(
-      yellow("Solution:"),
-      `delete ${green(projectName)} folder and try again.`
-    );
+    console.log(red('Project directory already exists'))
+    console.log(yellow('Solution:'), `delete ${green(projectName)} folder and try again.`)
 
-    return;
+    return
   }
 
-  const files = fs.readdirSync(template);
+  const files = fs.readdirSync(template)
 
   function copyDir(srcDir: string, destDir: string) {
-    fs.mkdirSync(destDir, { recursive: true });
+    fs.mkdirSync(destDir, { recursive: true })
     for (const file of fs.readdirSync(srcDir)) {
-      const srcFile = path.resolve(srcDir, file);
-      const destFile = path.resolve(destDir, file);
-      copy(srcFile, destFile);
+      const srcFile = path.resolve(srcDir, file)
+      const destFile = path.resolve(destDir, file)
+      copy(srcFile, destFile)
     }
   }
 
   function copy(src: string, dest: string) {
-    const stat = fs.statSync(src);
+    const stat = fs.statSync(src)
     if (stat.isDirectory()) {
-      copyDir(src, dest);
+      copyDir(src, dest)
     } else {
-      fs.copyFileSync(src, dest);
+      fs.copyFileSync(src, dest)
     }
   }
 
   const write = (file: string, content?: string) => {
-    const targetPath = path.join(root, renameFiles[file] ?? file);
+    const targetPath = path.join(root, renameFiles[file] ?? file)
     if (content) {
-      fs.writeFileSync(targetPath, content);
+      fs.writeFileSync(targetPath, content)
     } else {
-      copy(path.join(template, file), targetPath);
+      copy(path.join(template, file), targetPath)
     }
-  };
-
-  for (const file of files.filter((f) => f !== "package.json")) {
-    write(file);
   }
 
-  const pkg = JSON.parse(
-    fs.readFileSync(path.join(template, "package.json"), "utf-8")
-  );
+  for (const file of files.filter((f) => f !== 'package.json')) {
+    write(file)
+  }
 
-  pkg.name = projectName;
+  const pkg = JSON.parse(fs.readFileSync(path.join(template, 'package.json'), 'utf-8'))
 
-  write("package.json", `${JSON.stringify(pkg, null, 2)}\n`);
+  pkg.name = projectName
 
-  console.log(`created ${green(projectName)} with ${cyan(frameWork)}`);
+  write('package.json', `${JSON.stringify(pkg, null, 2)}\n`)
+
+  console.log(`created ${green(projectName)} with ${cyan(frameWork)}`)
 }
 
 async function setupProject() {
-  let projectSetUp: prompts.Answers<"projectName" | "framework" | "variant">;
+  let projectSetUp: prompts.Answers<'projectName' | 'framework' | 'variant'>
 
   try {
     projectSetUp = await prompts([
       {
-        type: "text",
-        name: "projectName",
-        message: "Project name:",
-        initial: "shaaban-project",
+        type: 'text',
+        name: 'projectName',
+        message: 'Project name:',
+        initial: 'shaaban-project'
       },
       {
-        type: "select",
-        name: "framework",
-        message: reset("Select a framework:"),
+        type: 'select',
+        name: 'framework',
+        message: reset('Select a framework:'),
         choices: FRAMEWORKS.map((framework) => {
           return {
             title: framework.color(framework.display),
-            value: framework,
-          };
+            value: framework
+          }
         }),
-        initial: 0,
+        initial: 0
       },
       {
-        type: "select",
-        name: "variant",
-        message: reset("Select a variant:"),
+        type: 'select',
+        name: 'variant',
+        message: reset('Select a variant:'),
         choices: (prev: Framework) => {
           return prev.variants.map((variant) => {
             return {
               title: variant.color(variant.display),
-              value: variant.name,
-            };
-          });
+              value: variant.name
+            }
+          })
         },
-        initial: 0,
-      },
-    ]);
+        initial: 0
+      }
+    ])
 
     createProject({
       frameWork: projectSetUp.variant,
-      projectName: validPackageName(projectSetUp.projectName),
-    });
+      projectName: validPackageName(projectSetUp.projectName)
+    })
   } catch (error) {
-    console.log(error);
+    console.log(error)
   }
 }
 
@@ -190,9 +185,9 @@ async function main() {
   //   ],
   // });
 
-  await setupProject();
+  await setupProject()
   // if (action === "setup") await setupProject();
   // else if (action === "addComponent") await addComponent();
 }
 
-main();
+main()

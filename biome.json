@@ -10,8 +10,10 @@
     "enabled": true,
     "rules": {
       "recommended": true,
-      "a11y": { "noSvgWithoutTitle": "off", "useKeyWithClickEvents": "off" },
-      "nursery": {},
+      "a11y": {
+        "noSvgWithoutTitle": "off",
+        "useKeyWithClickEvents": "off"
+      },
       "correctness": {
         "useExhaustiveDependencies": "off"
       },

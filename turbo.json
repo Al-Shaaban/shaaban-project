@@ -11,6 +11,6 @@
       "cache": false,
       "persistent": true
     },
-    "vet":{}
+    "vet": {}
   }
 }
