@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { cyan, green, red, reset, yellow } from 'kolorist'
+import { cyan, green, lightRed, red, reset, yellow } from 'kolorist'
 import prompts from 'prompts'
 
 type Framework = {
@@ -16,6 +16,11 @@ const FRAMEWORKS: Framework[] = [
     name: 'react-vite-ts-tw',
     display: 'Back Office',
     color: cyan
+  },
+  {
+    name: 'react-vite-ts-tw',
+    display: 'Package',
+    color: lightRed
   }
 ]
 const renameFiles: Record<string, string | undefined> = {

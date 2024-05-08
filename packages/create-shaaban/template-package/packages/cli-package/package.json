@@ -1,20 +1,15 @@
 {
-  "name": "create-shaaban",
-  "version": "1.0.11",
+  "name": "cli-package",
+  "version": "0.0.1",
   "type": "module",
   "license": "MIT",
   "author": "Abed Al Ghani Mosbah Shaaban",
-  "bin": {
-    "create-shaaban": "index.js",
-    "cvs": "index.js"
-  },
+  "main": "index.js",
   "files": [
     "index.js",
-    "template-react-vite-ts-tw",
-    "template-package",
     "dist"
   ],
-  "keywords": [
+  "keywords": [    
     "create-shaaban",
     "al-shaaban",
     "shaaban"
