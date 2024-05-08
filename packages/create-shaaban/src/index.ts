@@ -18,7 +18,7 @@ const FRAMEWORKS: Framework[] = [
     color: cyan
   },
   {
-    name: 'react-vite-ts-tw',
+    name: 'template-package',
     display: 'Package',
     color: lightRed
   }
