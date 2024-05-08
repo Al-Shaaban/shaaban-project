@@ -1,32 +1,21 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { blue, cyan, green, red, reset, yellow } from 'kolorist'
+import { cyan, green, red, reset, yellow } from 'kolorist'
 import prompts from 'prompts'
 
-type FrameworkPropperties = {
+type Framework = {
   name: string
   display: string
   color: (str: string | number) => string
 }
 
-type Framework = FrameworkPropperties & {
-  variants: FrameworkPropperties[]
-}
-
 const cwd = process.cwd()
 const FRAMEWORKS: Framework[] = [
   {
-    name: 'react',
-    display: 'React',
-    color: blue,
-    variants: [
-      {
-        name: 'react-vite-ts-tw',
-        display: 'Vite',
-        color: cyan
-      }
-    ]
+    name: 'react-vite-ts-tw',
+    display: 'Back Office',
+    color: cyan
   }
 ]
 const renameFiles: Record<string, string | undefined> = {
@@ -113,7 +102,7 @@ function createProject({
 }
 
 async function setupProject() {
-  let projectSetUp: prompts.Answers<'projectName' | 'framework' | 'variant'>
+  let projectSetUp: prompts.Answers<'projectName' | 'type'>
 
   try {
     projectSetUp = await prompts([
@@ -125,34 +114,20 @@ async function setupProject() {
       },
       {
         type: 'select',
-        name: 'framework',
+        name: 'type',
         message: reset('Select a framework:'),
-        choices: FRAMEWORKS.map((framework) => {
+        choices: FRAMEWORKS.map((type) => {
           return {
-            title: framework.color(framework.display),
-            value: framework
+            title: type.color(type.display),
+            value: type.name
           }
         }),
-        initial: 0
-      },
-      {
-        type: 'select',
-        name: 'variant',
-        message: reset('Select a variant:'),
-        choices: (prev: Framework) => {
-          return prev.variants.map((variant) => {
-            return {
-              title: variant.color(variant.display),
-              value: variant.name
-            }
-          })
-        },
         initial: 0
       }
     ])
 
     createProject({
-      frameWork: projectSetUp.variant,
+      frameWork: projectSetUp.type,
       projectName: validPackageName(projectSetUp.projectName)
     })
   } catch (error) {
