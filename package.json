@@ -2,7 +2,7 @@
   "name": "shaaban-project",
   "private": true,
   "engines": {
-    "node": "21.x",
+    "node": "20.x",
     "pnpm": "9.x"
   },
   "packageManager": "pnpm@9.0.6",
