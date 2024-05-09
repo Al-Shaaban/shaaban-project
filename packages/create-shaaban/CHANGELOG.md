@@ -1,5 +1,11 @@
 # create-shaaban
 
+## 1.0.15
+
+### Patch Changes
+
+- e2c18d2: Fix package template path
+
 ## 1.0.12
 
 ### Patch Changes
