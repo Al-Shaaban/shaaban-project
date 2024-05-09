@@ -18,7 +18,7 @@ const FRAMEWORKS: Framework[] = [
     color: cyan
   },
   {
-    name: 'template-package',
+    name: 'package',
     display: 'Package',
     color: lightRed
   }
