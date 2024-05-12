@@ -12,5 +12,9 @@ const withNextra = require('nextra')({
 module.exports = withNextra({
   reactStrictMode: true,
   eslint: { ignoreDuringBuilds: true },
-  distDir: 'out'
+  distDir: 'out',
+  output: 'export',
+  images: {
+    unoptimized: true
+  }
 })
