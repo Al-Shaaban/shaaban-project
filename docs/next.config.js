@@ -1,7 +1,8 @@
 const withNextra = require('nextra')({
   theme: 'nextra-theme-docs',
   themeConfig: './src/theme.config.tsx',
-  staticImage: true
+  staticImage: true,
+  defaultShowCopyCode: true
   // latex: true,
   // flexsearch: {
   //   codeblock: false
@@ -10,5 +11,6 @@ const withNextra = require('nextra')({
 
 module.exports = withNextra({
   reactStrictMode: true,
-  eslint: { ignoreDuringBuilds: true }
+  eslint: { ignoreDuringBuilds: true },
+  distDir: 'out'
 })
