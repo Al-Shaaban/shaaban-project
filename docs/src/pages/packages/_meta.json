@@ -1,0 +1,9 @@
+{
+  "index": {
+    "title": "Packages",
+    "display": "hidden",
+    "theme": {
+      "breadcrumb": false
+    }
+  }
+}

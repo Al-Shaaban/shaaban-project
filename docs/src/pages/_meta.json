@@ -1,11 +1,14 @@
 {
   "index": {
-    "title": "Introduction",
+    "type": "page",
+    "title": "Shaaban Developer",
+    "display": "hidden",
     "theme": {
-      "typesetting": "article",
-      "breadcrumb": false,
-      "toc": false
+      "layout": "raw"
     }
   },
-  "getting-started": "Getting Started"
+  "packages": {
+    "type": "page",
+    "title": "Packages"
+  }
 }

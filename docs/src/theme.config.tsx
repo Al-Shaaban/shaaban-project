@@ -1,6 +1,7 @@
+import type { MetaTag, NextSeoProps } from 'next-seo/lib/types'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/router'
-import { useConfig } from 'nextra-theme-docs'
+import { useConfig, type DocsThemeConfig } from 'nextra-theme-docs'
 
 import { Logo as ShaabanLogo } from './components/icons'
 import { Pre } from './components/Pre'
@@ -32,11 +33,7 @@ export const Logo = () => {
   )
 }
 
-/* eslint sort-keys: error */
-/**
- * @type {import('nextra-theme-docs').DocsThemeConfig}
- */
-const config = {
+const config: DocsThemeConfig = {
   darkMode: true,
   editLink: { component: () => null },
   feedback: { content: () => null },
@@ -79,21 +76,23 @@ const config = {
         }
       ],
       additionalMetaTags: [
-        { content: 'en', httpEquiv: 'Content-Language' },
-        { content: 'Shaaban Developer', name: 'apple-mobile-web-app-title' }
+        { content: 'en', httpEquiv: 'Content-Language' as const },
+        {
+          content: 'Shaaban Developer',
+          name: 'apple-mobile-web-app-title'
+        } as MetaTag
       ],
       description: 'Docs for Shaaban packages and projects.',
       openGraph: {
         // images: [{ url: 'https://developer.alshaaban.com/og.jpg?random=aaaaaaaaaaaaa' }]
       },
       canonical: `https://developer.alshaaban.com${currentUrl}`,
-      noindex: process.env.NO_INDEX === 'true',
       titleTemplate: '%s | Shaaban Developer',
       twitter: {
         cardType: 'summary_large_image',
         site: 'https://developer.alshaaban.com'
       }
-    }
+    } as NextSeoProps
   }
 }
 
