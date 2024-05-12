@@ -1,0 +1,10 @@
+{
+  "extends": "tsconfig/base.json",
+  "include": ["src", "theme.config.tsx", "src/pages", "components"],
+  "compilerOptions": {
+    "allowJs": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "jsx": "preserve"
+  }
+}
