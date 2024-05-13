@@ -5,5 +5,11 @@
     "theme": {
       "breadcrumb": false
     }
+  },
+  "create-shaaban": {
+    "title": "Create Shaaban",
+    "theme": {
+      "breadcrumb": true
+    }
   }
 }

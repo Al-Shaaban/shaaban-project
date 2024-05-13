@@ -5,6 +5,9 @@
       "typesetting": "article"
     }
   },
+  "philosophy": {
+    "title": "Philosophy"
+  },
   "getting-started": {
     "title": "Getting Started"
   }
