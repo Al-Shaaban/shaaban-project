@@ -1,0 +1,90 @@
+import { Logo, ReactLogo } from '~components/icons'
+import { Callout, Card, Cards, FileTree } from 'nextra/components'
+
+# Philosophy of Create Shaaban 🔮
+
+The `create-shaaban` project follows a specific philosophy that is inspired by the
+following principles and sticks with them accross its templates which consists of:
+
+1. **Structured**: The project is structured in a way that is easy to understand and
+   navigate. It is divided into different directories that each serve a specific purpose.
+
+2. **Production Ready** (in progress 👉👈): All the templates are ready to be deployed and
+   used.
+
+3. **Customizable**: The project is highly customizable and allows you to change the code
+   to fit your needs.
+
+## Structure
+
+The project is divided into the following directories:
+
+<Callout type="info" emoji="ℹ️">
+  Click on the folder icons to expand and see the files inside.
+</Callout>
+
+<FileTree>
+  <FileTree.Folder name="api">
+    <FileTree.Folder name="users">
+      <FileTree.File name="create" />
+      <FileTree.File name="get" />
+      <FileTree.File name="update" />
+      <FileTree.File name="delete" />
+    </FileTree.Folder>
+    <FileTree.Folder name="posts">
+      <FileTree.File name="create" />
+      <FileTree.File name="get" />
+      <FileTree.File name="update" />
+      <FileTree.File name="delete" />
+    </FileTree.Folder>
+  </FileTree.Folder>
+  <FileTree.Folder name="lib">
+    <FileTree.Folder name="components">
+      <FileTree.File name="header" />
+      <FileTree.File name="footer" />
+      <FileTree.File name="post" />
+    </FileTree.Folder>
+    <FileTree.Folder name="ui">
+      <FileTree.File name="label" />
+      <FileTree.File name="button" />
+      <FileTree.File name="avatar" />
+    </FileTree.Folder>
+    <FileTree.Folder name="hooks" />
+    <FileTree.Folder name="types" />
+    <FileTree.Folder name="utils" />
+  </FileTree.Folder>
+  <FileTree.Folder name="pages" defaultOpen>
+    <FileTree.File name="home" />
+    <FileTree.File name="about" />
+  </FileTree.Folder>
+</FileTree>
+
+<Callout type="warning" emoji="⚠️">
+  Depending on the template, the structure may vary so make sure to check the
+  documentation accordingly.
+</Callout>
+
+As you can see, the project is divided into different directories that each serve a
+specific purpose. For example the `pages` folder contains all the pages of the website,
+the `api` folder contains all the API routes, and the `lib` folder contains all the shared
+components and utilities. This structure makes it easy to navigate and understand the
+project. more on this topic can be found in each template page.
+
+## Customization
+
+The project is highly customizable and allows you to change the code to fit your needs.
+You can start by editing the ui components in the `lib/ui` folder, or by changing the API
+routes in the `api` folder. You can also add new pages to the website by creating new
+files in the `pages` folder. The possibilities are endless and you can customize the
+project in any way you want.
+
+## 🚀 Enough thinking and start building!
+
+<Cards>
+  <Card title="CLI" href="/packages/create-shaaban/getting-started" />
+  <Card
+    icon={<ReactLogo />}
+    title="Backoffice"
+    href="/packages/create-shaaban/backoffice"
+  />
+</Cards>
