@@ -6,7 +6,10 @@
     }
   },
   "philosophy": {
-    "title": "Philosophy"
+    "title": "Philosophy",
+    "theme": {
+      "typesetting": "article"
+    }
   },
   "getting-started": {
     "title": "Getting Started"
