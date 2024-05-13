@@ -13,5 +13,8 @@
   },
   "getting-started": {
     "title": "Getting Started"
+  },
+  "backoffice": {
+    "title": "BackOffice"
   }
 }
