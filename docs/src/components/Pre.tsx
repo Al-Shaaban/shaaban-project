@@ -43,11 +43,15 @@ export const Pre = ({
   }[language]
 
   return (
-    <div className="nextra-code-block relative mt-6 first:mt-0">
+    <div className={'nextra-code-block nx-relative nx-mt-6 first:nx-mt-0'}>
       {filename && (
         <>
-          <div className="bg-primary-700/5 dark:bg-primary-300/10 absolute top-0 z-[1] flex w-full items-center justify-between truncate rounded-t-xl px-4 py-2 text-xs text-gray-700 dark:text-gray-200">
-            <div className="flex w-full items-center gap-2">
+          <div
+            className={
+              'nx-absolute nx-flex nx-justify-between nx-items-center nx-top-0 nx-z-[1] nx-w-full nx-truncate nx-rounded-t-xl nx-bg-primary-700/5 nx-py-2 nx-px-4 nx-text-xs nx-text-gray-700 dark:nx-bg-primary-300/10 dark:nx-text-gray-200'
+            }
+          >
+            <div className={'nx-flex nx-w-full nx-items-center nx-gap-2'}>
               {Icon && <Icon />}
               <div>{filename}</div>
             </div>
@@ -61,9 +65,9 @@ export const Pre = ({
       )}
       <pre
         className={cn(
-          'bg-primary-700/5 dark:bg-primary-300/10 mb-4 overflow-x-auto rounded-xl text-[.9em] font-medium subpixel-antialiased',
-          'contrast-more:border-primary-900/20 contrast-more:dark:border-primary-100/40 contrast-more:border contrast-more:contrast-150',
-          filename ? 'pb-4 pt-12' : 'py-4',
+          'nx-bg-primary-700/5 nx-mb-4 nx-overflow-x-auto nx-rounded-xl nx-font-medium nx-subpixel-antialiased dark:nx-bg-primary-300/10 nx-text-[.9em]',
+          'contrast-more:nx-border contrast-more:nx-border-primary-900/20 contrast-more:nx-contrast-150 contrast-more:dark:nx-border-primary-100/40',
+          filename ? 'nx-pt-12 nx-pb-4' : 'nx-py-4',
           className
         )}
         ref={preRef}
@@ -73,13 +77,17 @@ export const Pre = ({
       </pre>
       <div
         className={cn(
-          'opacity-0 transition focus-within:opacity-100 [div:hover>&]:opacity-100',
-          'absolute right-0 m-[11px] flex gap-1',
-          filename ? 'top-8' : 'top-0'
+          'nx-opacity-0 nx-transition [div:hover>&]:nx-opacity-100 focus-within:nx-opacity-100',
+          'nx-flex nx-gap-1 nx-absolute nx-m-[11px] nx-right-0',
+          filename ? 'nx-top-8' : 'nx-top-0'
         )}
       >
-        <Button onClick={toggleWordWrap} className="md:hidden" title="Toggle word wrap">
-          <WordWrapIcon className="pointer-events-none h-4 w-4" />
+        <Button
+          onClick={toggleWordWrap}
+          className="md:nx-hidden"
+          title="Toggle word wrap"
+        >
+          <WordWrapIcon className="nx-pointer-events-none nx-h-4 nx-w-4" />
         </Button>
         {hasCopyCode && !filename && (
           <CopyToClipboard
