@@ -1,10 +1,9 @@
+import { Logo as ShaabanLogo } from '~components/icons'
+import { Pre } from '~components/Pre'
 import type { MetaTag, NextSeoProps } from 'next-seo/lib/types'
 import { usePathname } from 'next/navigation'
 import { useRouter } from 'next/router'
 import { useConfig, type DocsThemeConfig } from 'nextra-theme-docs'
-
-import { Logo as ShaabanLogo } from './components/icons'
-import { Pre } from './components/Pre'
 
 const Head = () => {
   const { asPath, defaultLocale, locale } = useRouter()
