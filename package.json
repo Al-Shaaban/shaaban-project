@@ -11,7 +11,11 @@
     "dev": "turbo run dev",
     "format": "prettier --write . --list-different",
     "vet": "turbo run vet",
-    "publish-packages": "turbo run vet && changeset version && changeset publish"
+    "publish-packages": "turbo run vet && changeset version && changeset publish",
+    "docs:dev": "pnpm dev --filter=docs",
+    "docs:build": "pnpm build --filter=docs",
+    "create-shaaban:dev": "pnpm dev --filter=create-shaaban",
+    "create-shaaban:build": "pnpm build --filter=create-shaaban"
   },
   "dependencies": {
     "@biomejs/biome": "1.6.4",
