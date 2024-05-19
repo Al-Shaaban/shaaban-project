@@ -120,7 +120,7 @@ async function setupProject() {
       {
         type: 'select',
         name: 'type',
-        message: reset('Select a framework:'),
+        message: reset('Select project type:'),
         choices: FRAMEWORKS.map((type) => {
           return {
             title: type.color(type.display),
