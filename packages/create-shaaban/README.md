@@ -60,3 +60,8 @@ bun create shaaban@latest
 making software development more accessible and enjoyable for everyone.
 
 Happy coding! 🚀
+
+## Credits
+
+People that inspired me and contributed directly and indirectly to this project.
+Ali kanso, Ali Noureldin, Raoul.
