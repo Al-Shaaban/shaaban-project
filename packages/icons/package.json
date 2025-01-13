@@ -1,0 +1,29 @@
+{
+  "name": "@shaaban/icons",
+  "version": "0.0.1",
+  "private": false,
+  "description": "Wide range of icons for your app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "rimraf dist && tsdx watch --format es,cjs --entry src/index.tsx",
+    "build": "rimraf dist && tsdx build --format es,cjs --entry src/index.tsx"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Al-Shaaban/shaaban-project.git",
+    "directory": "packages/icons"
+  },
+  "keywords": [
+    "icons",
+    "shaaban"
+  ],
+  "author": "Abed Al Ghani Mosbah Shaaban",
+  "license": "ISC",
+  "homepage": "https://github.com/Al-Shaaban/shaaban-project#readme",
+  "peerDependencies": {
+    "react": "^16.x || ^17.x || ^18.x"
+  },
+  "dependencies": {
+    "tsdx": "^0.14.1"
+  }
+}
